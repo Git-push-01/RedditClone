@@ -8,19 +8,14 @@ const puppeteer = require("puppeteer");
   });
   await page.screenshot({ path: "example.png" });
   await page.waitForSelector("body");
-	const postItems = [];
-  const rposts = await page.evaluate(() =>
-    Array.from(document.querySelectorAll("h3")).map(
-      (title) => title.textContent
-    )
-		
-  );
-  const links = await page.evaluate(() =>
-	Array.from(document.querySelectorAll("a"))
-.map(link => link.href)
-  );
 
-  console.log(rposts);
-	console.log(links)
+  const tags = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("a")).map((post) => ({
+      title: post.innerText,
+      link: post.href,
+    }))
+  );
+  console.log(tags);
+
   await browser.close();
 })();
