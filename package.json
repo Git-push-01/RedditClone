@@ -9,6 +9,7 @@
   "author": "Hugo",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "puppeteer": "^5.3.1",
     "twilio": "^3.49.3"
   }

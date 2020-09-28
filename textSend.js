@@ -1,18 +1,10 @@
-const sendRedditPolitical = async (title, link) => {
-    if (title) {
-        await client.messages
-            .create({
-                to: "9083800126",
-                from: "+15555555555",
-                body:
-                    "*** " +
-                    type +
-                    ": " +
-                    item.toUpperCase() +
-                    " ***" +
-                    "\n\n" +
-                    product
-            })
-            .then(message => console.log("Text Sent: ", message.sid));
-    }
-};
+
+const { accountSid, authToken} = require('./config');
+const client = require("twilio")(accountSid, authToken);
+
+client.messages.create({
+    to: '+19083800126',
+    from: '+12564195619',
+    body: 'love you boo'
+
+  }).then((message) => console.log(message.sid));
