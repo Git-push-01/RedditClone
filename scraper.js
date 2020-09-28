@@ -10,11 +10,12 @@ const puppeteer = require("puppeteer");
   await page.waitForSelector("body");
 
   const tags = await page.evaluate(() =>
-    Array.from(document.querySelectorAll("a")).map((post) => ({
+    Array.from(document.body.querySelectorAll("a")).map((post) => ({
       title: post.innerText,
       link: post.href,
     }))
   );
+
   console.log(tags);
 
   await browser.close();

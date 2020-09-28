@@ -9,6 +9,7 @@
   "author": "Hugo",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^5.3.1"
+    "puppeteer": "^5.3.1",
+    "twilio": "^3.49.3"
   }
 }
