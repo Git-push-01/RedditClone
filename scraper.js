@@ -18,9 +18,10 @@ const puppeteer = require("puppeteer");
 
   const newTitle = tags[18].title;
   const newLink = tags[19].link;
+  module.exports = newTitle
+  module.exports = newLink
 
-  console.log(newTitle);
-  console.log(newLink);
+
 
   await browser.close();
 })();
