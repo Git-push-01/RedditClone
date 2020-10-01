@@ -1,10 +1,11 @@
+
 const puppeteer = require("puppeteer");
 const schedule = require("node-schedule");
 
-const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
-  console.log("its working 1");
+// const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
+//   console.log("its working 1");
   (async () => {
-    const newPost = [];
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -21,14 +22,26 @@ const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
       }))
     );
 
-    const newPostTitle = tags[18].title;
-    const newPostlink = tags[19].link;
-    newPost.push(newPostTitle);
-    newPost.push(newPostlink);
-    module.exports = newPost.toString();
+      const newPostTitle = tags[18].title;
+      const newPostlink = tags[19].link;
 
-    console.log(newPost.toString());
+
+
+  module.exports = new Promise((resolve,reject) =>{
+
+   const newPostExport = newPostTitle
+
+   if (newPostExport){
+     resolve(newPostExport)
+
+   }else if(err){
+     reject(err);
+   }
+ })
+
+
+console.log(module.exports);
 
     await browser.close();
   })();
-});
+// });
