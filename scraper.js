@@ -1,4 +1,3 @@
-
 const puppeteer = require("puppeteer");
 const schedule = require("node-schedule");
 
@@ -22,25 +21,20 @@ const schedule = require("node-schedule");
       }))
     );
 
-      const newPostTitle = tags[18].title;
-      const newPostlink = tags[19].link;
+      const newPostTitle =  await tags[18].title
+      const newPostlink = await tags[19].link;
+
+      dataObj ={
+        title: newPostTitle,
+        link: newPostlink
+
+      }
 
 
-
-  module.exports = new Promise((resolve,reject) =>{
-
-   const newPostExport = newPostTitle
-
-   if (newPostExport){
-     resolve(newPostExport)
-
-   }else if(err){
-     reject(err);
-   }
- })
+  module.exports= dataObj
 
 
-console.log(module.exports);
+  console.log(dataObj);
 
     await browser.close();
   })();

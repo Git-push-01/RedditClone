@@ -1,10 +1,11 @@
-
 const schedule = require("node-schedule");
-const { accountSid, authToken } = require("./config.js");
+const { accountSid, authToken } = require("./config");
 const client = require("twilio")(accountSid, authToken);
-const newPost = require("./scraper")
-    //Here code using foo;
+const newPost = require('./scraper')
 
+
+
+console.log(newPost,"1");
 
 
 const redditNews = async (newPost) => {
@@ -21,4 +22,4 @@ const redditNews = async (newPost) => {
       // });
     }
   };
-  console.log(redditNews);
+  // console.log(redditNews);
