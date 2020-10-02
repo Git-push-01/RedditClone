@@ -3,10 +3,11 @@ const schedule = require("node-schedule");
 
 // const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
 //   console.log("its working 1");
-  (async () => {
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+async function webscraping() {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  let dataObj = {};
 
     await page.goto("https://www.reddit.com/r/politics/new/", {
       waitUntil: "networkidle2",
@@ -20,22 +21,22 @@ const schedule = require("node-schedule");
         link: post.href,
       }))
     );
-
-      const newPostTitle =  await tags[18].title
-      const newPostlink = await tags[19].link;
-
-      dataObj ={
-        title: newPostTitle,
-        link: newPostlink
-
-      }
+    dataObj = {
+      title: await tags[18].title,
+      link: await tags[19].link,
+    };
 
 
-  module.exports= dataObj
+
+  return dataObj
 
 
-  console.log(dataObj);
+await browser.close();
+}
 
-    await browser.close();
-  })();
+module.exports = webscraping()
+// console.log(module.exports, "2");
+
+
+
 // });
