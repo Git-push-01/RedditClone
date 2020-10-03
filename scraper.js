@@ -1,42 +1,32 @@
 const puppeteer = require("puppeteer");
 const schedule = require("node-schedule");
 
-// const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
-//   console.log("its working 1");
-
 async function webscraping() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   let dataObj = {};
 
-    await page.goto("https://www.reddit.com/r/politics/new/", {
-      waitUntil: "networkidle2",
-    });
+  await page.goto("https://www.reddit.com/r/politics/new/", {
+    waitUntil: "networkidle2",
+  });
 
-    await page.waitForSelector("body");
+  await page.waitForSelector("body");
 
-    const tags = await page.evaluate(() =>
-      Array.from(document.body.querySelectorAll("a")).map((post) => ({
-        title: post.innerText,
-        link: post.href,
-      }))
-    );
-    dataObj = {
-      title: await tags[18].title,
-      link: await tags[19].link,
-    };
+  const tags = await page.evaluate(() =>
+    Array.from(document.body.querySelectorAll("a")).map((post) => ({
+      title: post.innerText,
+      link: post.href,
+    }))
+  );
+  dataObj = {
+    title: await tags[18].title,
+    link: await tags[19].link,
+  };
 
+  return dataObj;
 
-
-  return dataObj
-
-
-await browser.close();
+  await browser.close();
 }
 
-module.exports = webscraping()
-// console.log(module.exports, "2");
-
-
-
-// });
+module.exports = webscraping();
+console.log(module.exports, " scraper 1");
