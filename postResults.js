@@ -1,9 +1,10 @@
 const { mongoURI } = require("./config");
 const mongoose = require("mongoose");
-// const schedule = require("node-schedule");
+const Post  = require("./postSchema")
+ const schedule = require("node-schedule");
 
-// const schechJob = schedule.scheduleJob("* * * * *", function () {
-//   console.log("its working 1");
+  const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
+
   async function newNews() {
     mongoose
       .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -12,9 +13,7 @@ const mongoose = require("mongoose");
     const dataObj = require("./scraper");
     dataObj.then(async function (postResult) {
       console.log(postResult, "1");
-      const postSchema = new mongoose.Schema({ title: String, link: String });
-      const post = mongoose.model("post", postSchema);
-      const p =  new post({
+      const p =  new Post({
         title: postResult.title,
         link: postResult.link,
       })
@@ -25,4 +24,4 @@ const mongoose = require("mongoose");
   }
   newNews();
 
-// });
+  });
