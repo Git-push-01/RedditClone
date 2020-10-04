@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Post  = require("./postSchema")
  const schedule = require("node-schedule");
 
-  const schechJob = schedule.scheduleJob("*/2 * * * *", function () {
+  const schechJob = schedule.scheduleJob("*/5 * * * *", function () {
 
   async function newNews() {
     mongoose
