@@ -1,5 +1,4 @@
 const puppeteer = require("puppeteer");
-const schedule = require("node-schedule");
 
 async function webscraping() {
   const browser = await puppeteer.launch();

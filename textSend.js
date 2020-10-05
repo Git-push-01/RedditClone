@@ -1,28 +1,24 @@
-const schedule = require("node-schedule");
 const { accountSid, authToken } = require("./config");
 const client = require("twilio")(accountSid, authToken);
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
+const schedule = require("node-schedule");
 
+const schechJob = schedule.scheduleJob("0 8 * * *", function () {
+async function redditNews() {
+  const response = await fetch("http://localhost:3000/posts");
+  const data = await response.json();
+  const postData = data.pop();
 
- const schechJob = schedule.scheduleJob("*/5 * * * *", function () {
- async function redditNews ()  {
-  const response = await fetch('http://localhost:3000/posts');
-    const data = await response.json()
-    const postTitle = data.map(post => post.title)
-    const postLink = data.map(link => link.link)
-    console.log(postTitle);
-  if (data) {
-
+  if (postData) {
     await client.messages
       .create({
         to: "+19083804770",
         from: "+12564195619",
-        body: "***" + postTitle + "***" + postLink ,
+        body: "*** " + "Your 8:00AM Headline" + " ***" + "\n\n" + postData.title + "\n\n" + postData.link,
       })
       .then((message) => console.log(message, message.sid));
-
   }
 }
 
-redditNews()
+redditNews();
 })
