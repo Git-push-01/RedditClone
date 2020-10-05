@@ -3,7 +3,7 @@ const client = require("twilio")(accountSid, authToken);
 const fetch = require("node-fetch");
 const schedule = require("node-schedule");
 
-const schechJob = schedule.scheduleJob("0 8 * * *", function () {
+const schechJob = schedule.scheduleJob("0 * * * *", function () {
 async function redditNews() {
   const response = await fetch("http://localhost:3000/posts");
   const data = await response.json();

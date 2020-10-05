@@ -2,7 +2,9 @@ const { mongoURI } = require("./config");
 const Post = require("./postSchema");
 
 const express = require("express");
+const schedule = require("node-schedule");
 
+const schechJob = schedule.scheduleJob("0 * * * *", function () {
 // Initialize app
 const app = express();
 
@@ -30,3 +32,4 @@ app.listen(3000, function () {
 });
 
 module.exports = allPosts;
+})

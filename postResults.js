@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Post = require("./postSchema");
 const schedule = require("node-schedule");
 
-const schechJob = schedule.scheduleJob("0 8 * * *", function () {
+const schechJob = schedule.scheduleJob("0 * * * *", function () {
   async function newNews() {
     mongoose
       .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
