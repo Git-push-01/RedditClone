@@ -1,2 +1,1 @@
-
-web: node getPosts.js
+web: node postResult.js
