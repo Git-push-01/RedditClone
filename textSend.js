@@ -1,8 +1,7 @@
 const { accountSid, authToken } = require("./config");
 const client = require("twilio")(accountSid, authToken);
 const fetch = require("node-fetch");
-
- const schedule = require("node-schedule");
+const schedule = require("node-schedule");
 
   const schechJob = schedule.scheduleJob("* * * * *", function () {
 async function redditNews() {
