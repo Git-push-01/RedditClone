@@ -1,2 +1,3 @@
 web: node getPosts.js
-web: node textSend.js
+
+worker: node textSend.js
