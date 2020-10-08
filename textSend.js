@@ -7,7 +7,7 @@ const schedule = require("node-schedule");
 // const schechJob = schedule.scheduleJob("* * * * *", function () {
 
 async function redditNews() {
-  const response = await fetch("https://localhost:3000/posts");
+  const response = await fetch("https://localhost:5000/posts");
   const data = await response.json();
   const postData = await data.pop();
 
