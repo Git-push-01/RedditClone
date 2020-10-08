@@ -3,11 +3,12 @@ const client = require("twilio")(accountSid, authToken);
 const fetch = require("node-fetch");
 const schedule = require("node-schedule");
 
+const PORT = process.env.PORT || 5000
 
- const schechJob = schedule.scheduleJob("* * * * *", function () {
 
 async function redditNews() {
-  const response = await fetch("http://localhost:5000/posts");
+
+  const response = await fetch("http://localhost:"+PORT+"/posts");
   const data = await response.json();
   const postData = await data.pop();
 
@@ -27,9 +28,9 @@ async function redditNews() {
       })
       .then((message) => console.log(message, message.sid));
   }
+
 }
+
 
 module.exports = redditNews
 console.log(module.exports, "fetch 1");
-
- });
