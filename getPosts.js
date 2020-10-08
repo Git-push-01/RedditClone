@@ -28,7 +28,7 @@ const allPosts = app.get("/posts", function (req, res) {
 
 // Start server with port 3000
 app.listen(3000, function () {
-  console.log("Server started on localhost:3000");
+  console.log("Server started on localhost:3000/posts");
 });
 
 module.exports = allPosts;
