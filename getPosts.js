@@ -27,7 +27,8 @@ const allPosts = app.get("/posts", function (req, res) {
 });
 
 // Start server with port 3000
-app.listen(process.env.PORT || 3000, function () {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function () {
   console.log("Server started on localhost:3000");
 });
 
