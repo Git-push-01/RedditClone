@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const schedule = require("node-schedule");
 
 
-// const schechJob = schedule.scheduleJob("* * * * *", function () {
+ const schechJob = schedule.scheduleJob("* * * * *", function () {
 
 async function redditNews() {
   const response = await fetch("http://localhost:5000/posts");
@@ -32,4 +32,4 @@ async function redditNews() {
 module.exports = redditNews
 console.log(module.exports, "fetch 1");
 
-  // });
+ });
