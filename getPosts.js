@@ -32,4 +32,4 @@ app.listen(PORT, function () {
   console.log("Server started on localhost:3000");
 });
 
-module.exports = allPosts;
+module.exports = allPosts

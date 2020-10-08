@@ -20,5 +20,6 @@ const schedule = require("node-schedule");
       console.log(p, "got him");
     });
   }
-  newNews();
+
   // });
+  module.exports = newNews

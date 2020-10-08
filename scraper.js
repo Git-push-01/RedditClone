@@ -29,5 +29,5 @@ async function webscraping() {
   await browser.close();
 }
 
-module.exports = webscraping();
+module.exports = webscraping()
 console.log(module.exports, " scraper 1");
