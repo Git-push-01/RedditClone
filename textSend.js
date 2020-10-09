@@ -8,9 +8,11 @@ const PORT = process.env.PORT || 5000
 
 async function redditNews() {
 
-  const response = await fetch("http://localhost:"+PORT+"/posts");
+  const response = await fetch("http://localhost:"+PORT+"/posts")
+  .then(async function (response) {
   const data = await response.json()
   const postData = await data.pop();
+  const dateTime = new Date().toLocaleString();
 
 
   if (postData) {
@@ -20,7 +22,7 @@ async function redditNews() {
         from: "+12564195619",
         body:
           "*** " +
-          "Your 8:00AM Headline" +
+          "Your News " + dateTime + " Headline" +
           " ***" +
           "\n\n" +
           postData.title +
@@ -28,7 +30,9 @@ async function redditNews() {
           postData.link,
       })
       .then((message) => console.log(message, message.sid));
+
   }
+})
 
 }
 
