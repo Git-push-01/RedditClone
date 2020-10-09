@@ -9,8 +9,10 @@ const PORT = process.env.PORT || 5000
 async function redditNews() {
 
   const response = await fetch("http://localhost:"+PORT+"/posts");
-  const data = await response.json();
+  const data = await response.json()
+
   const postData = await data.pop();
+
 
   if (postData) {
     await client.messages
@@ -29,6 +31,8 @@ async function redditNews() {
       .then((message) => console.log(message, message.sid));
   }
 
+} catch (err) {
+  next(err);
 }
 
 
