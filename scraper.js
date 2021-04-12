@@ -11,10 +11,8 @@ async function webscraping() {
     waitUntil: "networkidle2",
   });
 
-  await page.waitForSelector("body");
-
   const tags = await page.evaluate(() =>
-    Array.from(document.body.querySelectorAll("a")).map((post) => ({
+    Array.from(document.querySelectorAll("a")).map((post) => ({
       title: post.innerText,
       link: post.href,
     }))
@@ -29,5 +27,5 @@ async function webscraping() {
   await browser.close();
 }
 
-module.exports = webscraping()
+module.exports = webscraping();
 console.log(module.exports, " scraper 1");
